@@ -20,4 +20,4 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Execute Jar File
-        run: sudo kill -9  `sudo lsof -t -i:88` & sudo java -jar /home/ubuntu/actions-runner/actions-runner2/_work/demoapp/demoapp/target
+        run: sudo java -jar /home/ubuntu/actions-runner/actions-runner2/_work/demoapp/demoapp/target/demoapp.jar
