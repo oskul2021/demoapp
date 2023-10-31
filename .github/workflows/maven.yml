@@ -10,6 +10,7 @@ jobs:
     runs-on: self-hosted
 
     steps:
+<<<<<<< HEAD
       - uses: actions/checkout@v3
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -19,3 +20,14 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn -B package --file pom.xml
+=======
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+>>>>>>> 9b7f755ce09fcb6257e3d1056cfc5b1f2f74ce9b
