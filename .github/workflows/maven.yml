@@ -2,12 +2,14 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "master" ]
+    branches: 
+      - master
+      - config-server
 
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: config-server
 
     steps:
       - uses: actions/checkout@v3
@@ -16,8 +18,6 @@ jobs:
         with:
           java-version: '19'
           distribution: 'temurin'
-          cache:
+          cache: maven
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
-      - name: Execute Jar File
-        run: sudo kill `sudo lsof -t -i:8888` & sudo java -jar /home/ubuntu/actions-runner/actions-runner2/_work/demoapp/demoapp/target/demoapp.jar
+        run: cd config-server/;mvn -B package --file pom.xml
